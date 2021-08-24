@@ -1,0 +1,37 @@
+ ffmpeg version n4.3.2-167-g85713d85a7 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --enable-nonfree --enable-cuda-nvcc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64
+  libavutil      56. 51.100 / 56. 51.100
+  libavcodec     58. 91.100 / 58. 91.100
+  libavformat    58. 45.100 / 58. 45.100
+  libavdevice    58. 10.100 / 58. 10.100
+  libavfilter     7. 85.100 /  7. 85.100
+  libswscale      5.  7.100 /  5.  7.100
+  libswresample   3.  7.100 /  3.  7.100
+ V..... h264_cuvid           Nvidia CUVID H264 decoder (codec h264)
+ V..... hevc_cuvid           Nvidia CUVID HEVC decoder (codec hevc)
+ V..... mjpeg_cuvid          Nvidia CUVID MJPEG decoder (codec mjpeg)
+ V..... mpeg1_cuvid          Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)
+ V..... mpeg2_cuvid          Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)
+ V..... mpeg4_cuvid          Nvidia CUVID MPEG4 decoder (codec mpeg4)
+ V..... vc1_cuvid            Nvidia CUVID VC1 decoder (codec vc1)
+ V..... vp8_cuvid            Nvidia CUVID VP8 decoder (codec vp8)
+ V..... vp9_cuvid            Nvidia CUVID VP9 decoder (codec vp9)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Nvidia CUVID HEVC decoder - hevc_cuvid, h264_cuvid, mjpeg_cuvid, mpeg1/2/4_cuvid, vc1_cuvid, vp8/9_cuvid
+    General capabilities: delay avoidprobe hardware 
+    Threading capabilities: none
+    Supported hardware devices: cuda 
+    Supported pixel formats: cuda nv12 p010le p016le
+hevc_cuvid AVOptions:
+  -deint             <int>        .D.V...... Set deinterlacing mode (from 0 to 2) (default weave)
+     weave           0            .D.V...... Weave deinterlacing (do nothing)
+     bob             1            .D.V...... Bob deinterlacing
+     adaptive        2            .D.V...... Adaptive deinterlacing
+  -gpu               <string>     .D.V...... GPU to be used for decoding
+  -surfaces          <int>        .D.V...... Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
+  -drop_second_field <boolean>    .D.V...... Drop second field when deinterlacing (default false)
+  -crop              <string>     .D.V...... Crop (top)x(bottom)x(left)x(right)
+  -resize            <string>     .D.V...... Resize (width)x(height)

@@ -1,0 +1,201 @@
+ffmpeg version n4.3.2-167-g85713d85a7 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --enable-nonfree --enable-cuda-nvcc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64
+  libavutil      56. 51.100 / 56. 51.100
+  libavcodec     58. 91.100 / 58. 91.100
+  libavformat    58. 45.100 / 58. 45.100
+  libavdevice    58. 10.100 / 58. 10.100
+  libavfilter     7. 85.100 /  7. 85.100
+  libswscale      5.  7.100 /  5.  7.100
+  libswresample   3.  7.100 /  3.  7.100
+ ... hwupload_cuda     V->V       Upload a system memory frame to a CUDA device.
+ ... overlay_cuda      VV->V      Overlay one video on top of another using CUDA
+ ... scale_cuda        V->V       GPU accelerated video resizer
+ ... scale_npp         V->V       NVIDIA Performance Primitives video scaling and format conversion
+ ... thumbnail_cuda    V->V       Select the most representative frame in a given sequence of consecutive frames.
+ ... transpose_npp     V->V       NVIDIA Performance Primitives video transpose
+ T.. yadif_cuda        V->V       Deinterlace CUDA frames
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter hwupload_cuda
+  Upload a system memory frame to a CUDA device.
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+cudaupload AVOptions:
+  device            <int>        ..FV...... Number of the device to use (from 0 to INT_MAX) (default 0)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter overlay_cuda
+  Overlay one video on top of another using CUDA
+    Inputs:
+       #0: main (video)
+       #1: overlay (video)
+    Outputs:
+       #0: default (video)
+overlay_cuda AVOptions:
+  x                 <int>        ..FV...... Overlay x position (from INT_MIN to INT_MAX) (default 0)
+  y                 <int>        ..FV...... Overlay y position (from INT_MIN to INT_MAX) (default 0)
+  eof_action        <int>        ..FV...... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)
+     repeat          0            ..FV...... Repeat the previous frame.
+     endall          1            ..FV...... End both streams.
+     pass            2            ..FV...... Pass through the main input.
+  shortest          <boolean>    ..FV...... force termination when the shortest input terminates (default false)
+  repeatlast        <boolean>    ..FV...... repeat overlay of the last overlay frame (default true)
+
+framesync AVOptions:
+  eof_action        <int>        ..FV...... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)
+     repeat          0            ..FV...... Repeat the previous frame.
+     endall          1            ..FV...... End both streams.
+     pass            2            ..FV...... Pass through the main input.
+  shortest          <boolean>    ..FV...... force termination when the shortest input terminates (default false)
+  repeatlast        <boolean>    ..FV...... extend last frame of secondary streams beyond EOF (default true)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter scale_cuda
+  GPU accelerated video resizer
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+cudascale AVOptions:
+  w                 <string>     ..FV...... Output video width (default "iw")
+  h                 <string>     ..FV...... Output video height (default "ih")
+  force_original_aspect_ratio <int>        ..FV...... decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+     disable         0            ..FV......
+     decrease        1            ..FV......
+     increase        2            ..FV......
+  force_divisible_by <int>        ..FV...... enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter scale_npp
+  NVIDIA Performance Primitives video scaling and format conversion
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+nppscale AVOptions:
+  w                 <string>     ..FV...... Output video width (default "iw")
+  h                 <string>     ..FV...... Output video height (default "ih")
+  format            <string>     ..FV...... Output pixel format (default "same")
+  interp_algo       <int>        ..FV...... Interpolation algorithm used for resizing (from 0 to INT_MAX) (default cubic)
+     nn              1            ..FV...... nearest neighbour
+     linear          2            ..FV...... linear
+     cubic           4            ..FV...... cubic
+     cubic2p_bspline 5            ..FV...... 2-parameter cubic (B=1, C=0)
+     cubic2p_catmullrom 6            ..FV...... 2-parameter cubic (B=0, C=1/2)
+     cubic2p_b05c03  7            ..FV...... 2-parameter cubic (B=1/2, C=3/10)
+     super           8            ..FV...... supersampling
+     lanczos         16           ..FV...... Lanczos
+  force_original_aspect_ratio <int>        ..FV...... decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+     disable         0            ..FV......
+     decrease        1            ..FV......
+     increase        2            ..FV......
+  force_divisible_by <int>        ..FV...... enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter thumbnail_cuda
+  Select the most representative frame in a given sequence of consecutive frames.
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+thumbnail_cuda AVOptions:
+  n                 <int>        ..FV...... set the frames batch size (from 2 to INT_MAX) (default 100)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter transpose_npp
+  NVIDIA Performance Primitives video transpose
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+npptranspose AVOptions:
+  dir               <int>        ..FV...... set transpose direction (from 0 to 3) (default cclock_flip)
+     cclock_flip     0            ..FV...... rotate counter-clockwise with vertical flip
+     clock           1            ..FV...... rotate clockwise
+     cclock          2            ..FV...... rotate counter-clockwise
+     clock_flip      3            ..FV...... rotate clockwise with vertical flip
+  passthrough       <int>        ..FV...... do not apply transposition if the input matches the specified geometry (from 0 to 2) (default none)
+     none            0            ..FV...... always apply transposition
+     landscape       1            ..FV...... preserve landscape geometry
+     portrait        2            ..FV...... preserve portrait geometry
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Filter yadif_cuda
+  Deinterlace CUDA frames
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+yadif_cuda AVOptions:
+  mode              <int>        ..FV...... specify the interlacing mode (from 0 to 3) (default send_frame)
+     send_frame      0            ..FV...... send one frame for each frame
+     send_field      1            ..FV...... send one frame for each field
+     send_frame_nospatial 2            ..FV...... send one frame for each frame, but skip spatial interlacing check
+     send_field_nospatial 3            ..FV...... send one frame for each field, but skip spatial interlacing check
+  parity            <int>        ..FV...... specify the assumed picture field parity (from -1 to 1) (default auto)
+     tff             0            ..FV...... assume top field first
+     bff             1            ..FV...... assume bottom field first
+     auto            -1           ..FV...... auto detect parity
+  deint             <int>        ..FV...... specify which frames to deinterlace (from 0 to 1) (default all)
+     all             0            ..FV...... deinterlace all frames
+     interlaced      1            ..FV...... only deinterlace frames marked as interlaced
+
+This filter has support for timeline through the 'enable' option.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+OpenCL filters' detail can be found through ffmpeg -h filter=xxxx, while xxxx is one of the following OpenCL filters:
+   ... avgblur_opencl    V->V       Apply average blur filter
+   ... boxblur_opencl    V->V       Apply boxblur filter to input video
+   ... colorkey_opencl   V->V       Turns a certain color into transparency. Operates on RGB colors.
+   ... convolution_opencl V->V       Apply convolution mask to input video
+   ... deshake_opencl    V->V       Feature-point based video stabilization filter
+   ... dilation_opencl   V->V       Apply dilation effect
+   ... erosion_opencl    V->V       Apply erosion effect
+   ... nlmeans_opencl    V->V       Non-local means denoiser through OpenCL
+   ... overlay_opencl    VV->V      Overlay one video on top of another
+   ... pad_opencl        V->V       Pad the input video.
+   ... prewitt_opencl    V->V       Apply prewitt operator
+   ... program_opencl    |->V       Filter video using an OpenCL program
+   ... roberts_opencl    V->V       Apply roberts operator
+   ... sobel_opencl      V->V       Apply sobel operator
+   ... tonemap_opencl    V->V       Perform HDR to SDR conversion with tonemapping.
+   ... transpose_opencl  V->V       Transpose input video
+   ... unsharp_opencl    V->V       Apply unsharp mask to input video
+   ... xfade_opencl      VV->V      Cross fade one video with another video.
+   ... openclsrc         |->V       Generate video using an OpenCL program
+
+For example, ffmpeg -h filter=boxblur_opencl
+
+Filter boxblur_opencl
+  Apply boxblur filter to input video
+    Inputs:
+       #0: default (video)
+    Outputs:
+       #0: default (video)
+boxblur_opencl AVOptions:
+  luma_radius       <string>     ..FV...... Radius of the luma blurring box (default "2")
+  lr                <string>     ..FV...... Radius of the luma blurring box (default "2")
+  luma_power        <int>        ..FV...... How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
+  lp                <int>        ..FV...... How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
+  chroma_radius     <string>     ..FV...... Radius of the chroma blurring box
+  cr                <string>     ..FV...... Radius of the chroma blurring box
+  chroma_power      <int>        ..FV...... How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
+  cp                <int>        ..FV...... How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
+  alpha_radius      <string>     ..FV...... Radius of the alpha blurring box
+  ar                <string>     ..FV...... Radius of the alpha blurring box
+  alpha_power       <int>        ..FV...... How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+  ap                <int>        ..FV...... How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+
+
+  

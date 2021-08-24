@@ -1,0 +1,61 @@
+################################################################################
+# Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+#
+# NVIDIA Corporation and its licensors retain all intellectual property
+# and proprietary rights in and to this software, related documentation
+# and any modifications thereto.  Any use, reproduction, disclosure or
+# distribution of this software and related documentation without an express
+# license agreement from NVIDIA Corporation is strictly prohibited.
+#
+################################################################################
+ 
+This sample application demonstrates usage of libnvds_msgbroker.so.
+The nvds_msgbroker library provides access to various messaging protocol adapter
+libraries through a common facility.
+
+Dependencies
+-------------
+The msgbroker library dynamically loads protocol adapters passed as a paramter during
+connection creation. Also connection string and/or a message protocol adapter library
+specific cfg file is passed as paramater during connection creation.
+Please see documentation for the adapter libraries for their specific requirements.
+
+The following information is expected for each protocol:
+  - Path to the protocol adapter library
+    The libraries are found under /opt/nvidia/deepstream/deepstream/lib:
+    Kafka: libnvds_kafka_proto.so
+    AMQP: libnvds_amqp_proto.so
+    Azure Device Client: libnvds_azure_proto.so
+
+  - Protocol-specific Connection string and/or configuration file
+    See README for each of the supported protocols:
+    Kafka: ../../nvds_msgapi/kafka_protocol_adaptor
+    AMQP: ../../nvds_msgapi/amqp_protocol_adaptor
+    Azure Device Client: ../../nvds_msgapi/azure_protocol_adaptor/device_client
+
+Sample Application
+-------------
+This sample application tests the following protocols:
+  - Kafka
+  - AMQP
+  - Azure IoTHub Device
+
+To build the application:
+  $ make -f Makefile.test
+
+To run the application:
+  $ ./test_msgbrokerlib
+
+The application tests a series of operations (connect/send/subscribe/disconnect)
+on each of aforementioned protocols. One thread is launched for each protocol test.
+All threads are launched simultaneously and hence the order in which the tests are
+launched may vary each time the app is run
+
+NOTE:
+1. There can be simultaneous multiple connections with external brokers.
+2. The protocol-specific config file has a "share-connection" config. If you want to allow
+the connection created to be shared with an other component within the same process,
+uncomment the line share-connection=1 in cfg file
+3. If there are 2 tests with each attempting to connect with the same connection params,
+same protocol adapter library and if share-connection=1 , just one connection is created
+internally and the same connection handle is returned to the both the callers(threads)
