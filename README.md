@@ -5,7 +5,7 @@ Hydra GOCEAN edge computing GPU prototype with patented software & hardware arch
 
 
 ## XOS
-Operating system on top of Hydra GOCEAN platform including Jetson Xavier AGX/NX and Nano
+Operating system on top of Hydra GOCEAN platform including Jetson Xavier AGX/NX, TX1/2, Parker and Nano
 - DeepStream
 - ROS
 

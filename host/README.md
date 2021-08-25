@@ -1,8 +1,13 @@
 # Host
 Applications on host to communicate with Jetson
+```
+1. AIoT Comm
+2. DeepStream
+3. FFmpeg
+4. VLC
+```
 
-
-## AIoT Comm
+## 1. AIoT Comm
 AIoT communication is designed and implemented basing on Kafka
 - Bidirectional messaging between cloud and edge
 - Security messaging
@@ -48,17 +53,13 @@ FFmpeg with GPU acceleration requires a system with Linux OS:
     ```
 
 
-## DS
+## 2. DeepStream
 Deploy deepstream on the host to handle the RTSP streaming from Jetson for real-time video analytisc
 - Host is also Jetson with ARM SOC
 - Host is x86 system with GPU attached
 
 
-## VLC
-Behaving as the player or viewer for RTSP from Jetson
-
-
-## FFmpeg
+## 3. FFmpeg
 FFmpeg is the most popular multimedia transcoding software used extensively
 FFplay is a portable media player using the FFmpeg libraries and the SDL library
 NVENC & NVDEC can be effectively used with FFmpeg//FFplay to significantly speed up video transcoding for Vidpress
@@ -147,3 +148,7 @@ FFmpeg with GPU acceleration is supported on all Linux platforms.
     $ ffplay rtsp://192.168.86.1699:8555/ds-test
     ```
  
+
+## 4. VLC
+Behaving as the player or viewer for RTSP from Jetson
+
