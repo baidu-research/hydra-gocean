@@ -81,10 +81,10 @@ ROS Kinetic or Melodic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 ```
 sudo apt-get install ros-melodic-perception-pcl
 ```
-Follow [PCL Installation](http://www.pointclouds.org/downloads/linux.html)
-Follow [Eigen Installation](http://eigen.tuxfamily.org/index.php?title=Main_Page)
-Follow [openCV Installation](https://opencv.org/releases/)
-Follow [livox_ros_driver Installation](https://github.com/Livox-SDK/livox_ros_driver)
+- Follow [PCL Installation](https://pointclouds.org/downloads/#linux)
+- Follow [Eigen Installation](http://eigen.tuxfamily.org/index.php?title=Main_Page)
+- Follow [openCV Installation](https://opencv.org/releases/)
+- Follow [livox_ros_driver Installation](https://github.com/Livox-SDK/livox_ros_driver)
 
 ### Dependencies
 Before running livox_ros_driver, ROS and Livox-SDK must be installed.
