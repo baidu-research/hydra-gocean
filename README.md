@@ -13,6 +13,7 @@ Applications basing on XOS for different scenarios use cases
 - DeepStream
 - Argus
 - LiDAR
+- Multimedia
 
 ## Host
 Host software setup

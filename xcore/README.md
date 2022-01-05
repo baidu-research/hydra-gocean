@@ -18,5 +18,5 @@ Basing on the sensor type and software component, LiDAR has terrestrial, airborn
 
 
 ## Multimedia
-The Multimedia is a collection of low-level software that support flexible application development, which enables flexibility by providing better control over the underlying hardware blocks.
+The Multimedia is a collection of low-level software that support flexible application development.
 
