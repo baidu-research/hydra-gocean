@@ -1,10 +1,10 @@
 ![Baidu Logo](/doc/baidu-research-logo-small.png)
 
-# Hydra GOCEAN
-Hydra GOCEAN edge computing GPU prototype with patented software & hardware architecture design
+# Hydra Gocean
+Hydra Gocean edge computing GPU prototype with patented software & hardware architecture design
 
 ## XOS
-Operating system on top of Hydra GOCEAN platform including Jetson Xavier AGX/NX, TX1/2, Parker and Nano
+Operating system on top of Hydra Gocean platform including Jetson Xavier AGX/NX, TX1/2, Parker and Nano
 - DeepStream
 - ROS
 
