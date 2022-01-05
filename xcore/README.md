@@ -1,5 +1,5 @@
 # XCORE
-This folder includes GOCEAN edge computing applications with platform sw/fw
+This folder includes Gocean edge computing applications with platform sw/fw
 
 
 ## DSX
@@ -14,3 +14,9 @@ Argus camera applications
 
 
 ## LiDAR
+Basing on the sensor type and software component, LiDAR has terrestrial, airborne, and mobile applications.
+
+
+## Multimedia
+The Multimedia is a collection of low-level software that support flexible application development, which enables flexibility by providing better control over the underlying hardware blocks.
+

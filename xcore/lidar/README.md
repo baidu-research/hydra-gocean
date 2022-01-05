@@ -1,5 +1,5 @@
 # LiDAR Projects
-LiDAR is a method for determining ranges by targeting an object with a laser and measuring the time for the reflected light to return to the receiver, which can be used to make digital 3-D representations of areas on the earth's surface and ocean bottom, due to differences in laser return times, and by varying laser wavelengths. It has terrestrial, airborne, and mobile applications.
+LiDAR is a method for determining ranges by targeting an object with a laser and measuring the time for the reflected light to return to the receiver, which can be used to make digital 3-D representations of areas on the earth's surface and ocean bottom, due to differences in laser return times, and by varying laser wavelengths.
 
 
 # Livox LiDAR
